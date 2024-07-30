@@ -1,8 +1,11 @@
 import * as THREE from "three";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js' 
+import * as dat from 'dat.gui'
+const gui = new dat.GUI();
 
-const gui = new GUI();
+const box = document.getElementById("box");
+
+
 // 假设typeState已经被定义
 const typeState = {
   color: "#0670c1",
@@ -71,10 +74,9 @@ camera.position.set(15, 15, 15);
 
 // 创建渲染器
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor("#201919");
-document.body.appendChild(renderer.domElement);
-
+renderer.setSize(box.clientWidth, box.clientHeight);
+renderer.setClearColor("#201919"); 
+box.appendChild(renderer.domElement);
 // 添加环境光
 const ambientLight = new THREE.AmbientLight(0x0a0a0a0);
 scene.add(ambientLight);
